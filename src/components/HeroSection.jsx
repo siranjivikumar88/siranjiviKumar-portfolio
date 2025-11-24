@@ -20,11 +20,11 @@ const HeroSection = ({ setActiveSection }) => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex items-center justify-center px-6 md:px-20">
+  <section className="relative w-full h-auto md:h-screen flex flex-col md:flex-row items-center justify-center px-6 md:px-20 gap-10 ">
       
       {/* Left */}
       <Motion.div
-        className="flex flex-col gap-4 text-center md:text-left max-w-xl z-10"
+  className="flex flex-col  items-center justify-center gap-4 text-center md:text-left max-w-xl z-10 order-2 md:order-1 pt-0 md:pt-36 lg:pt-0"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
@@ -72,7 +72,7 @@ const HeroSection = ({ setActiveSection }) => {
 
       {/* Profile Image */}
       <Motion.div
-        className="hidden md:flex z-10 items-center justify-center"
+  className="flex items-center justify-center order-1 md:order-2 pt-18  md:pt-0"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.1 }}
@@ -80,7 +80,7 @@ const HeroSection = ({ setActiveSection }) => {
         <img
           src="/profilePic.jpg"
           alt="Profile"
-          className="w-80 h-80 rounded-full border-4 border-blue-400 shadow-lg object-cover object-[center_-0px]"
+  className="w-44 h-44 md:w-80 md:h-80 rounded-full border-4 border-blue-400 shadow-lg object-cover object-top mx-auto"
         />
       </Motion.div>
     </section>
@@ -88,3 +88,4 @@ const HeroSection = ({ setActiveSection }) => {
 };
 
 export default HeroSection;
+
