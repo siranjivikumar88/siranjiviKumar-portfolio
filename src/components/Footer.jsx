@@ -1,5 +1,6 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import{Link} from "react-router-dom"
 
 const Footer = () => {
   return (
@@ -39,13 +40,14 @@ const Footer = () => {
         </div>
 
         {/* Unordered Menu Links */}
-        <div className="flex flex-wrap gap-6 text-gray-300 mt-4">
-          <a href="#" className="hover:text-primary transition">Home</a>
-          <a href="#" className="hover:text-primary transition">About</a>
-          <a href="#" className="hover:text-primary transition">Skills</a>
-          <a href="#" className="hover:text-primary transition">Projects</a>
-          <a href="#" className="hover:text-primary transition">Contact</a>
-        </div>
+      <div className="flex flex-wrap gap-6 text-gray-300 mt-4">
+  <Link to="/home" className="hover:text-primary transition">Home</Link>
+  <Link to="/about" className="hover:text-primary transition">About</Link>
+  <Link to="/skills" className="hover:text-primary transition">Skills</Link>
+  <Link to="/projects" className="hover:text-primary transition">Projects</Link>
+  <Link to="/contact" className="hover:text-primary transition">Contact</Link>
+</div>
+
 
         {/* Divider */}
         <div className="w-full h-px bg-gray-700/30 mt-4" />
