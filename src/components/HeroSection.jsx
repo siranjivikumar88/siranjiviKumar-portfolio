@@ -71,21 +71,20 @@ const HeroSection = ({ setActiveSection }) => {
       </Motion.div>
 
       {/* Profile Image */}
-      <Motion.div
-  className="flex items-center justify-center order-1 md:order-2 pt-18  md:pt-0"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.1 }}
-      >
-        <img
-          src="/profilePic.jpg"
-          alt="Profile"
+     <Motion.div
+  className="flex items-center justify-center order-1 md:order-2 pt-22  md:pt-0"
+  initial={{ opacity: 0, scale: 0.8 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 1.1 }}
+>
+  <img
+    src="/profilePic.jpg"
+    alt="Profile"
   className="w-44 h-44 md:w-80 md:h-80 rounded-full border-4 border-blue-400 shadow-lg object-cover object-top mx-auto"
-        />
-      </Motion.div>
+  />
+</Motion.div>
     </section>
   );
 };
 
 export default HeroSection;
-
