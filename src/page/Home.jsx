@@ -26,7 +26,7 @@ const Home = () => {
         {activeSection === "project" && <Project />}
         {activeSection === "contact" && <Contact />}
       </main>
-      <Footer/>
+      <Footer setActiveSectio={setActiveSection}/>
     </div>
   );
 };
