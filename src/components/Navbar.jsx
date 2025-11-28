@@ -7,7 +7,8 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Project", href: "#project" },
-  { name: "Contact", href: "#contact" }
+  { name: "Contact", href: "#contact" },
+  {name: "Resume", href: "#resume" }
 ]
 
 const Navbar = ({setActiveSection}) => {
@@ -44,7 +45,7 @@ const Navbar = ({setActiveSection}) => {
       <div className='container mx-auto flex flex-col md:flex-row md:justify- items-center px-4 '>
   <div className='flex justify-evenly w-full items-center md:justify-between'>
     {/* The Name (SiranjiviKumar PortFolio) */}
-    <a href="#hero" className='text-xl sm:text-2xl font-bold text-primary text-glow'>
+    <a href="#hero" className='text-xl sm:text-2xl font-bold text-primary text-glow no-underline'>
       SiranjiviKumar PortFolio 
     </a>
     
@@ -59,7 +60,7 @@ const Navbar = ({setActiveSection}) => {
           
           {/* Desktop Navigation */}
           <div className='hidden md:block'> 
-            <ul className='flex space-x-8'>
+            <ul className='flex space-x-8 list-none' >
               {navItems.map((item) => (
                 <li key={item.name}>
                 <a
@@ -72,7 +73,7 @@ const Navbar = ({setActiveSection}) => {
 
                  setActiveSection(key);
                       }}
-                      className="text-foreground/90 hover:text-primary transition-colors text-lg font-medium"
+                      className="text-foreground/90 hover:text-primary transition-colors text-lg font-medium no-underline"
                        >
                              {item.name}
                 </a>
@@ -105,12 +106,12 @@ const Navbar = ({setActiveSection}) => {
       </div>
 
       <nav className='p-6'>
-        <ul className='space-y-3'>
+        <ul className='space-y-3 list-none'>
           {navItems.map((item) => (
             <li key={item.name}>
               <a 
                 href={item.href}
-                className='block text-foreground/90 hover:text-primary py-4 px-6 rounded-xl hover:bg-primary/10 transition-all duration-300 text-lg font-medium border-l-4 border-transparent hover:border-primary hover:translate-x-1'
+                className='block text-foreground/90 hover:text-primary py-2 px-6 rounded-xl hover:bg-primary/10 transition-all duration-300 text-lg font-medium border-l-4 border-transparent hover:border-primary hover:translate-x-1 no-underline'
                 onClick={() => {
                   const key = item.name === "Home" ? "hero" : item.name.toLowerCase();
                   setActiveSection(key);
@@ -126,7 +127,7 @@ const Navbar = ({setActiveSection}) => {
         </ul>
       </nav>
 
-      <div className='absolute bottom-0 left-0 right-0 p-6 border-t border-border/50'>
+      <div className='absolute bottom-0 left-0 right-0 px-6 py-4 border-t border-border/50'>
         <p className='text-foreground/60 text-sm text-center'>
           © 2025 SiranjiviKumar
         </p>
