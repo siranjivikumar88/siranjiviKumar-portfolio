@@ -46,7 +46,7 @@ const Navbar = ({setActiveSection}) => {
       <div className='container mx-auto flex flex-col md:flex-row md:justify- items-center px-4 '>
   <div className='flex justify-evenly w-full items-center md:justify-between'>
     {/* The Name (SiranjiviKumar PortFolio) */}
-    <NavLink to="home" className='md:text-4xl sm:text-2xl font-bold text-primary text-glow no-underline'>
+    <NavLink to="home" className='text-4xl  font-bold text-primary text-glow no-underline'>
        PortFolio 
     </NavLink>
     
@@ -142,3 +142,4 @@ const Navbar = ({setActiveSection}) => {
 }
 
 export default Navbar
+
