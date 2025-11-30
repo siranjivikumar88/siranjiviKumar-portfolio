@@ -1,86 +1,144 @@
-import React, { useEffect, useState } from "react";
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaBootstrap,
-  FaMobileAlt,
-} from "react-icons/fa";
-import { SiRedux, SiTailwindcss, SiAxios } from "react-icons/si";
+import React, { useEffect, useState } from 'react'
+import { cn } from '../lib/util'
+import { Menu, X } from 'lucide-react'
+import { NavLink } from "react-router-dom";
 
-const skills = [
-  { name: "HTML5", icon: <FaHtml5 className="text-orange-500" /> },
-  { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" /> },
-  { name: "JavaScript (ES6+)", icon: <FaJs className="text-yellow-400" /> },
-  { name: "React.js", icon: <FaReact className="text-cyan-400" /> },
-  { name: "Redux Toolkit", icon: <SiRedux className="text-purple-500" /> },
-  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-teal-400" /> },
-  { name: "Bootstrap", icon: <FaBootstrap className="text-purple-400" /> },
-  { name: "Axios / Fetch API", icon: <SiAxios className="text-blue-400" /> },
-  { name: "Responsive Design", icon: <FaMobileAlt className="text-green-400" /> },
-];
+const navItems = [
+  { name: "Home", path: "#home" },
+  { name: "About", path: "#about" },
+  { name: "Skills", path: "#skills" },
+  { name: "Project", path: "#project" },
+  { name: "Contact", path: "#contact" },
+  {name: "Resume", path: "#resume" }
+]
 
-const Skills = () => {
-
-  // Detect current theme state
-  const [isDarkMode, setIsDarkMode] = useState(
-    document.documentElement.classList.contains("dark")
-  );
+const Navbar = ({setActiveSection}) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
-    const observer = new MutationObserver(() => {
-      setIsDarkMode(document.documentElement.classList.contains("dark"));
-    });
-    observer.observe(document.documentElement, { attributes: true });
-    return () => observer.disconnect();
-  }, []);
-
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMobileMenuOpen]);
+  
   return (
-    <section id="skills" className="w-full py-24 ">
-      <div className="max-w-6xl mx-auto text-center px-2 md:px-4">
+    <>
+      <nav className={cn(
+        'fixed w-full z-50 transition-all duration-300',
+        isScrolled 
+          ? "py-3 bg-background/90 backdrop-blur-md shadow-lg"
+          : "py-6", 
+      )}>
+        {/*
+          *** FIX: Using a tiny horizontal padding (px-2) to maximize space on mobile.
+        */}
+      <div className='container mx-auto flex flex-col md:flex-row md:justify- items-center px-4 '>
+  <div className='flex justify-evenly w-full items-center md:justify-between'>
+    {/* The Name (SiranjiviKumar PortFolio) */}
+    <NavLink to="home" className='md:text-4xl sm:text-2xl font-bold text-primary text-glow no-underline'>
+       PortFolio 
+    </NavLink>
+    
+    {/* The Mobile Menu Button (Next to the name on the same line) */}
+    <button
+      onClick={() => setIsMobileMenuOpen(true)}
+      className='p-1 md:hidden hover:bg-primary/20 rounded-full transition-all flex-shrink-0'
+    >
+      <Menu size={28} className='text-foreground' />
+    </button>
+  </div>
+          
+          {/* Desktop Navigation */}
+          <div className='hidden md:block'> 
+            <ul className='flex space-x-8 list-none' >
+              {navItems.map((item) => (
+                <li key={item.name}>
+                <NavLink
+                  to={item.path}
+                  onClick={() => {
+                  const key =
+                  item.name === "Home"
+                  ? "hero"
+                  : item.name.toLowerCase();
 
-        {/* Title */}
-        <h2
-          className={`text-4xl font-bold mb-14 transition-colors duration-300 ${
-            isDarkMode ? "text-blue-400" : "text-blue-600"
-          }`}
-        >
-          My <span className={`${isDarkMode ? "text-blue-300" : "text-blue-600"}`}>Skills</span>
-        </h2>
+                 setActiveSection(key);
+                      }}
+                      className="text-foreground/90 hover:text-primary transition-colors text-lg font-medium no-underline"
+                       >
+                             {item.name}
+                </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-10">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className={`
-                rounded-2xl p-6 flex flex-col items-center justify-center gap-4
-                shadow-lg hover:scale-105 transition-all duration-300
-
-                ${
-                  isDarkMode
-                    ? "bg-background/40 border border-blue-400/20 hover:shadow-blue-500/40"
-                    : "bg-white border border-blue-500/30 hover:shadow-blue-400/30"
-                }
-              `}
-            >
-              <div className="text-5xl">{skill.icon}</div>
-
-              {/* Text also reacts to theme */}
-              <p
-                className={`text-lg font-semibold transition-colors duration-300 ${
-                  isDarkMode ? "text-gray-200" : "text-gray-700"
-                }`}
-              >
-                {skill.name}
-              </p>
-            </div>
-          ))}
+       
         </div>
-      </div>
-    </section>
-  );
-};
+      </nav>
 
-export default Skills;
+      {isMobileMenuOpen && (
+  <div 
+    className='fixed inset-0 z-[60] bg-background/95 backdrop-blur-sm md:hidden'
+    onClick={() => setIsMobileMenuOpen(false)}
+  >
+    <div 
+      className='absolute top-0 right-0 w-64 h-full bg-card shadow-2xl'
+      onClick={(e) => e.stopPropagation()} 
+    >
+      <div className='flex items-center justify-between p-6 border-b border-border/50'>
+        <span className='text-2xl font-bold text-primary text-glow'>Menu</span>
+        <button
+          onClick={() => setIsMobileMenuOpen(false)}
+          className='p-2 hover:bg-primary/20 rounded-full transition-all'
+        >
+          <X size={24} className='text-foreground' />
+        </button>
+      </div>
+
+      <nav className='p-6'>
+        <ul className='space-y-3 list-none'>
+          {navItems.map((item) => (
+            <li key={item.name}>
+              <NavLink
+                to={item.path}
+                className='block text-foreground/90 hover:text-primary py-2 px-6 rounded-xl hover:bg-primary/10 transition-all duration-300 text-lg font-medium border-l-4 border-transparent hover:border-primary hover:translate-x-1 no-underline'
+                onClick={() => {
+                  const key = item.name === "Home" ? "hero" : item.name.toLowerCase();
+                  setActiveSection(key);
+                  setIsMobileMenuOpen(false);
+
+                  document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                {item.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className='absolute bottom-0 left-0 right-0 px-6 py-4 border-t border-border/50'>
+        <p className='text-foreground/60 text-sm text-center'>
+          © 2025 SiranjiviKumar
+        </p>
+      </div>
+    </div>
+  </div>
+)}
+
+    </>
+  )
+}
+
+export default Navbar
