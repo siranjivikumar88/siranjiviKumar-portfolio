@@ -8,6 +8,7 @@ import Skills from '../components/Skills'
 import Project from '../components/Project'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
+import Resume from '../components/Resume'
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -25,6 +26,7 @@ const Home = () => {
         {activeSection === "skills" && <Skills />}
         {activeSection === "project" && <Project />}
         {activeSection === "contact" && <Contact />}
+        {activeSection === "resume" && (<Resume />)}
       </main>
       <Footer setActiveSectio={setActiveSection}/>
     </div>
