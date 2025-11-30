@@ -78,7 +78,7 @@ const About = () => {
           className={`max-w-2xl mx-auto rounded-xl p-6 sm:p-10 shadow-lg backdrop-blur-sm transition-all duration-300
           ${
             isDarkMode
-              ? "bg-background/40 border border-blue-400/30"
+              ? "bg-background/40 border border-blue-400/20  hover:shadow-blue-500/40"
               : "bg-white border border-blue-500/30 shadow-md"
           }`}
         >
