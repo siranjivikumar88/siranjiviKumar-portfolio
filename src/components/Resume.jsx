@@ -31,7 +31,7 @@ const Resume = () => {
         "
       >
         {/* Header */}
-        <h1 className="text-4xl font-bold text-center mb-1">
+        <h1 className="text-xl md:text-4xl font-bold text-center mb-1">
           SIRANJIVIKUMAR
         </h1>
 
@@ -64,8 +64,8 @@ const Resume = () => {
 
         <ul
           className="
-            grid grid-cols-2 gap-2 mb-6 list-none 
-            text-foreground opacity-90
+            grid grid-cols-2 gap-2 mb-6 list-none  
+            text-foreground opacity-90  pl-0
           "
         >
           <li>React.js</li>
@@ -89,11 +89,11 @@ const Resume = () => {
             GM Financial (Aug 2024 – Present)
           </h3>
 
-          <p className="opacity-80 mb-1">
+          <p className="opacity-80 mb-1 text-left md:text-center">
             Financial Services | React Developer
           </p>
 
-          <ul className="list-none ml-5 mt-2 opacity-80 leading-relaxed">
+          <ul className="list-none pl-0 md:ml-5 mt-2 opacity-80 leading-relaxed ">
             <li>Developed and enhanced loan processing UI using React.</li>
             <li>Implemented Redux workflows to reduce re-renders.</li>
             <li>Built reusable UI components.</li>
@@ -107,11 +107,11 @@ const Resume = () => {
             Cox Communications (Sept 2023 – July 2024)
           </h3>
 
-          <p className="opacity-80 mb-1">
+          <p className="opacity-80 mb-1 text-left md:text-center">
             Telecommunications | React Developer
           </p>
 
-          <ul className="list-none ml-5 mt-2 opacity-80 leading-relaxed">
+          <ul className="list-none pl-0 md:ml-5 mt-2 opacity-80 leading-relaxed">
             <li>Built customer-facing UI for account management.</li>
             <li>Implemented secure workflows and optimized UI.</li>
             <li>Integrated APIs for billing and payment services.</li>
