@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { motion as Motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const HeroSection = ({ setActiveSection }) => {
 
@@ -29,7 +28,7 @@ const HeroSection = ({ setActiveSection }) => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-4xl md:text-6xl font-extrabold">
+        <h1 className="text-4xl lg:text-6xl font-extrabold">
           Hi, I'm <span className="text-blue-400">Siranjivi Kumar</span>
         </h1>
 
@@ -80,7 +79,7 @@ const HeroSection = ({ setActiveSection }) => {
   <img
     src="/profilePic.jpg"
     alt="Profile"
-  className="w-44 h-44 md:w-80 md:h-80 rounded-full border-4 border-blue-400 shadow-lg object-cover object-top mx-auto"
+  className="w-44 h-44 md:w-60 md:h-62 lg:w-80 lg:h-80 rounded-full border-4 border-blue-400 shadow-lg object-cover object-top mx-auto"
   />
 </Motion.div>
     </section>
