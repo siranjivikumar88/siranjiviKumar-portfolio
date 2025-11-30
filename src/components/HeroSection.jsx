@@ -71,7 +71,7 @@ const HeroSection = ({ setActiveSection }) => {
 
       {/* Profile Image */}
      <Motion.div
-  className="flex items-center justify-center order-1 md:order-2 pt-32  md:pt-0"
+  className="flex items-center justify-center order-1 md:order-2 pt-48  md:pt-0"
   initial={{ opacity: 0, scale: 0.8 }}
   animate={{ opacity: 1, scale: 1 }}
   transition={{ duration: 1.1 }}
@@ -87,4 +87,5 @@ const HeroSection = ({ setActiveSection }) => {
 };
 
 export default HeroSection;
+
 
