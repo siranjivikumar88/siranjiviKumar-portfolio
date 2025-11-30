@@ -7,6 +7,7 @@ import Project from "./components/Project";
 import Contact from "./components/Contact";
 import NotFound from "./page/NotFound";
 import HeroSection from "./components/HeroSection";
+import Resume from "./components/Resume";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/skills" element={<Skills />} />
         <Route path="/projects" element={<Project />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/resume" element={<Resume/>} />
 
         {/* 404 Page */}
         <Route path="*" element={<NotFound />} />
